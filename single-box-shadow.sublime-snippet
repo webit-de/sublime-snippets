@@ -1,0 +1,7 @@
+<snippet>
+  <content><![CDATA[
+@include single-box-shadow(${1:color}, ${2:x}, ${3:y}, ${4:blur}, ${5:spread}, ${6:inset(true/false)});
+]]></content>
+  <tabTrigger>sha</tabTrigger>
+  <scope>source.scss</scope>
+</snippet>

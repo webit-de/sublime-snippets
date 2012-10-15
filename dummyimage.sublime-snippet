@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[
+<img src="http://imagefoo.dev.webit.de/${1:100}x${2:100}/${3:333}/${4:fff}/" height="${2:100}" width="${1:100}" alt="$5">
+]]></content>
+	<tabTrigger>dummy</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

@@ -1,0 +1,32 @@
+<snippet>
+  <content><![CDATA[
+<nav class="main-nav">
+  <ul class="level1">
+    <li><a href="#" title="#">Link</a></li>
+    <li><strong>Link</strong></li>
+    <li>
+      <a href="#" title="#">Link</a>
+      <ul class="level2">
+        <li><a href="#" title="#">Link</a></li>
+        <li><strong>Link</strong></li>
+        <li><a href="#" title="#">Link</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>
+        <a href="#" title="#">Link</a>
+      </strong>
+      <ul class="level2">
+        <li><a href="#" title="#">Link</a></li>
+        <li><strong>Link</strong></li>
+        <li><a href="#" title="#">Link</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>main</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>text.html</scope>
+</snippet>
