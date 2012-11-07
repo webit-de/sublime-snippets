@@ -7,6 +7,8 @@ var $1 = {
   cacheElements: function() {
   },
   init: function() {
+    this.cacheElements();
+    this.bindEvents();
     $2
   },
   bindEvents: function() {
