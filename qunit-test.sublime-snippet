@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+/* $1 */
+asyncTest( "$2", function() {
+
+  \$('#qunit-fixture').load('${3:sandbox.html}', function(){
+
+    \$.getScript("/assets/js/${4:script.js}", function(data, textStatus, jqxhr) {
+
+      ok($5);
+      start();
+
+    });
+  });
+
+});
+]]></content>
+	<tabTrigger>test</tabTrigger>
+	<scope>source.js</scope>
+</snippet>
