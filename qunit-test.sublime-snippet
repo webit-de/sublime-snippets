@@ -3,7 +3,7 @@
 /* $1 */
 asyncTest( "$2", function() {
 
-  \$('#qunit-fixture').load('${3:sandbox.html}', function(){
+  \$('#qunit-fixture').load('/${3:sandbox.html}', function(){
 
     \$.getScript("/assets/js/${4:script.js}", function(data, textStatus, jqxhr) {
 
