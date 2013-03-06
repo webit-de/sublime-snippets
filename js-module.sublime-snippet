@@ -1,7 +1,7 @@
 <snippet>
   <content><![CDATA[
 /************************************************************
-@description 
+@description $1
 *************************************************************/
 var $1 = {
   cacheElements: function() {
@@ -14,6 +14,7 @@ var $1 = {
   bindEvents: function() {
   }
 };
+// $1.init();
 ]]></content>
   <tabTrigger>mod</tabTrigger>
   <scope>source.js</scope>
