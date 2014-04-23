@@ -1,9 +1,0 @@
-<snippet>
-  <content><![CDATA[
-font: {
-  size: $1em;
-}
-]]></content>
-  <tabTrigger>font</tabTrigger>
-  <scope>source.scss</scope>
-</snippet>
