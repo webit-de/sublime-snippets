@@ -2,23 +2,81 @@
 	<content><![CDATA[
 module.exports = function(grunt) {
 
-  // Project configuration.
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-    uglify: {
+    pkg: grunt.file.readJSON( 'package.json' ),
+
+    watch: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        livereload: true,
+        spawn: false
       },
-      build: {
-        src: 'src/<%= pkg.name %>.js',
-        dest: 'build/<%= pkg.name %>.min.js'
+
+      scss: {
+        files: '**/*.scss',
+        tasks: ['compass:development']
+      },
+
+      js: {
+        files: '**/*.js',
+        tasks: [],
+      },
+
+      html: {
+        files: '**/*.html',
+        tasks: [],
+      }
+    },
+
+    compass: {
+      options: {
+        // httpPath: "/",
+        banner: "/* <%= pkg.author %>, Version: <%= pkg.version %> */",
+        cssDir: 'assets/css',
+        imagesDir: 'assets/img',
+        noLineComments: false,
+        sassDir: 'assets/scss',
+        specify: "assets/scss/*.scss"
+      },
+      development: {
+        options: {
+          environment: 'development'
+        }
+      },
+      production: {
+        options: {
+          environment: 'production'
+        }
+      }
+    },
+
+    requirejs: {
+      development: {
+        options: {
+          baseUrl: "assets/js",
+          mainConfigFile: "assets/js/$1.js",
+          name: "$1",
+          optimize: 'none',
+          out: "build/$1.js"
+        }
+      },
+      production: {
+        options: {
+          baseUrl: "assets/js",
+          mainConfigFile: "assets/js/$1.js",
+          name: "$1",
+          out: "build/$1.js"
+        }
       }
     }
+
   });
 
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['compass:development', 'requirejs:development']);
+  grunt.registerTask('production', ['compass:production', 'requirejs:production']);
 
 };
 ]]></content>
