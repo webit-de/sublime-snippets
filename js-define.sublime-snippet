@@ -1,0 +1,29 @@
+<snippet>
+  <content><![CDATA[
+define(['jquery'${1:, 'plugins/mfdoitifneeded'} ${2:, '$3'}], function() {
+
+  /************************************************************
+  @description $4
+  *************************************************************/
+  var $4 = {
+    cacheElements: function() {
+    },
+    init: function() {
+      this.cacheElements();
+      this.bindEvents();
+    },
+    bindEvents: function() {
+    }
+  };
+
+  $4.init();
+
+  // return {
+  //   $5: $4.$5
+  // };
+
+});
+]]></content>
+  <tabTrigger>def</tabTrigger>
+  <scope>source.js</scope>
+</snippet>
