@@ -1,0 +1,48 @@
+<snippet>
+  <content><![CDATA[
+/* rte */
+
+.rte {
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @extend .heading;
+  }
+
+  h2 {
+    @extend .style2;
+  }
+  h3 {
+    @extend .style3;
+  }
+  h4{
+    @extend .style4;
+  }
+  h6 {
+    @extend .style5;
+  }
+  h6 {
+    @extend .style6;
+  }
+
+  p {
+    @extend .text;
+  }
+
+  ol,
+  ul {
+    @extend .list;
+    @extend .link-list;
+  }
+}
+
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>rte</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.scss</scope>
+</snippet>
