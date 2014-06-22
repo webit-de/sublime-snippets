@@ -1,8 +1,0 @@
-<snippet>
-	<content><![CDATA[
-background: 0 0 no-repeat;
-@include base64-image($1);
-]]></content>
-	<tabTrigger>base</tabTrigger>
-	<scope>source.scss</scope>
-</snippet>
