@@ -10,20 +10,37 @@ module.exports = function(grunt) {
         livereload: true,
         spawn: false
       },
-
       scss: {
-        files: '**/*.scss',
+        files: 'assets/scss/**/*.scss',
         tasks: ['compass:development']
       },
-
-      js: {
-        files: '**/*.js',
-        tasks: [],
+      js_modules: {
+        files: ['assets/js/modules/*.js', 'assets/js/*.js'],
+        tasks: ['requirejs:development'],
       },
-
+      js_deferred: {
+        files: ['assets/js/modules/deferred/*.js'],
+        tasks: ['uglify:deferred'],
+      },
+      js_external: {
+        files: ['assets/js/libs/external/*.js'],
+        tasks: ['uglify:external'],
+      },
+      js_libs: {
+        files: ['assets/js/libs/*.js'],
+        tasks: ['uglify:external'],
+      },
       html: {
         files: '**/*.html',
-        tasks: [],
+        tasks: ['replace:development'],
+      },
+      img_content: {
+        files: 'img/**/*.{png,gif,jpg,svg}',
+        tasks: ['imagemin:content'],
+      },
+      img_background: {
+        files: 'assets/img/**/*.{png,gif,jpg,svg}',
+        tasks: ['imagemin:backgrounds'],
       }
     },
 
@@ -93,17 +110,29 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      development: {
+      deferred: {
         options: {
           beautify: true
         },
         files: [{
             expand: true,
-            cwd: 'assets/js/modules/deferred',
-            src: '**/*.js',
-            dest: 'build/assets/js/modules/deferred'
+            cwd: 'assets/js',
+            src: ['modules/deferred/**/*.js'],
+            dest: 'build/assets/js'
+        }]
+      },
+      external: {
+        options: {
+          beautify: true
+        },
+        files: [{
+            expand: true,
+            cwd: 'assets/js',
+            src: ['libs/**/*.js'],
+            dest: 'build/assets/js'
         }]
       }
+
     },
 
     imagemin: {
@@ -134,9 +163,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-replace');
 
-  grunt.registerTask('default', ['replace', 'compass:development', 'requirejs:development', 'uglify:development', 'imagemin:content']);
+  grunt.registerTask('default', ['replace', 'compass:development', 'requirejs:development', 'uglify', 'imagemin:content']);
 
 };
+
 ]]></content>
 	<tabTrigger>g2</tabTrigger>
 	<scope>source.js</scope>
