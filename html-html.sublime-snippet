@@ -11,7 +11,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/frontend-template-setup.css">
-  <script src="assets/js/libs/modernizr.js"></script>
+  <script src="assets/js/libs/external/modernizr.js"></script>
 </head>
 <body>
 
@@ -26,7 +26,7 @@
     </div> <!-- col c16of24 -->
   </div> <!-- cols24 -->
 
-  <script data-main="assets/js/frontend-template-setup" src="assets/js/libs/require.js"></script>
+  <script data-main="assets/js/frontend-template-setup" src="assets/js/libs/external/require.js"></script>
 
 </body>
 </html>
