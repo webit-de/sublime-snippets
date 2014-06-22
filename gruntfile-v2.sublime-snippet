@@ -1,0 +1,143 @@
+<snippet>
+	<content><![CDATA[
+module.exports = function(grunt) {
+
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+
+    watch: {
+      options: {
+        livereload: true,
+        spawn: false
+      },
+
+      scss: {
+        files: '**/*.scss',
+        tasks: ['compass:development']
+      },
+
+      js: {
+        files: '**/*.js',
+        tasks: [],
+      },
+
+      html: {
+        files: '**/*.html',
+        tasks: [],
+      }
+    },
+
+    compass: {
+      options: {
+        // httpPath: "/",
+        banner: "/* <%= pkg.author %>, Version: <%= pkg.version %> */",
+        cssDir: 'build/assets/css',
+        imagesDir: 'assets/img',
+        noLineComments: false,
+        sassDir: 'assets/scss',
+        specify: "assets/scss/*.scss"
+      },
+      development: {
+        options: {
+          environment: 'development'
+        }
+      },
+      production: {
+        options: {
+          environment: 'production'
+        }
+      }
+    },
+
+    replace: {
+      development: {
+        options: {
+          patterns: [
+            {
+              match: /{{(.+)}}/g,
+              replacement: function (match, placeholder) {
+                return grunt.file.read("content-elements/" + placeholder + ".html");
+              }
+            }
+          ]
+        },
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ['*.html'],
+            dest: 'build/'
+          }
+        ]
+      }
+    },
+
+    requirejs: {
+      development: {
+        options: {
+          baseUrl: "assets/js",
+          mainConfigFile: "assets/js/frontend-template-setup.js",
+          name: "frontend-template-setup",
+          optimize: 'none',
+          out: "build/assets/js/frontend-template-setup.js"
+        }
+      },
+      production: {
+        options: {
+          baseUrl: "assets/js",
+          mainConfigFile: "assets/js/frontend-template-setup.js",
+          name: "frontend-template-setup",
+          out: "build/assets/js/frontend-template-setup.js"
+        }
+      }
+    },
+
+    uglify: {
+      development: {
+        options: {
+          beautify: true
+        },
+        files: [{
+            expand: true,
+            cwd: 'assets/js/modules/deferred',
+            src: '**/*.js',
+            dest: 'build/assets/js/modules/deferred'
+        }]
+      }
+    },
+
+    imagemin: {
+      content: {
+        files: [{
+          expand: true,
+          cwd: 'img',
+          src: ['**/*.{png,jpg,gif,svg}'],
+          dest: 'build/img'
+        }]
+      },
+      backgrounds: {
+        files: [{
+          expand: true,
+          cwd: 'assets/img',
+          src: ['**/*.{png,jpg,gif,svg}'],
+          dest: 'build/assets/img'
+        }]
+      }
+    }
+
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-replace');
+
+  grunt.registerTask('default', ['replace', 'compass:development', 'requirejs:development', 'uglify:development', 'imagemin:content']);
+
+};
+]]></content>
+	<tabTrigger>g2</tabTrigger>
+	<scope>source.js</scope>
+</snippet>
