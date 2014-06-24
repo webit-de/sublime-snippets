@@ -1,6 +1,6 @@
 <snippet>
   <content><![CDATA[
-define(['jquery'${1:, 'plugins/mfdoitifneeded'} ${2:, '$3'}], function() {
+define(['jquery'${1:, 'libs/jquery.doitifneeded'} ${2:, '$3'}], function() {
   
   /************************************************************
   Strict Mode
